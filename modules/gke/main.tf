@@ -30,10 +30,6 @@ resource "google_container_cluster" "pgahq" {
     enabled = true
   }
 
-  ip_allocation_policy {
-    use_ip_aliases = true
-  }
-
   min_master_version = data.google_container_engine_versions.pgahq.latest_master_version
   network            = google_compute_subnetwork.pgahq.name
   subnetwork         = google_compute_subnetwork.pgahq.name
