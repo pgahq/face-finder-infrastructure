@@ -7,7 +7,7 @@ variable "zone" {
 }
 
 variable "project_id" {
-  default = "panama-257312"
+  default = "face-finder-318218"
 }
 
 variable "zone_name" {

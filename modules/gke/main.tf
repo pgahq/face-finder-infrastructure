@@ -23,11 +23,23 @@ data "google_container_engine_versions" "pgahq" {
 }
 
 resource "google_container_cluster" "pgahq" {
-  name     = var.cluster_name
-  location = var.zone
+  name                     = var.cluster_name
+  location                 = var.zone
+  initial_node_count       = 2
+  remove_default_node_pool = true
 
   cluster_autoscaling {
     enabled = true
+    resource_limits {
+      resource_type = "cpu"
+      minimum       = 2
+      maximum       = 20
+    }
+    resource_limits {
+      resource_type = "memory"
+      minimum       = 4
+      maximum       = 40
+    }
   }
 
   min_master_version = data.google_container_engine_versions.pgahq.latest_master_version

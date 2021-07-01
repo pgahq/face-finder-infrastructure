@@ -15,6 +15,11 @@ terraform {
       version = "2.3.2"
     }
   }
+
+  backend "gcs" {
+    bucket      = "face-finder-tf-state"
+    credentials = "credentials.json"
+  }
 }
 
 provider "google" {
