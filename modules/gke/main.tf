@@ -3,8 +3,8 @@ resource "google_compute_network" "pgahq" {
   auto_create_subnetworks = false
 }
 
-resource "google_compute_address" "pgahq" {
-  name   = var.cluster_name
+resource "google_compute_address" "nginx" {
+  name   = "nginx"
   region = var.region
 }
 
@@ -35,7 +35,7 @@ resource "google_container_cluster" "pgahq" {
   release_channel {
     channel = "REGULAR"
   }
-  network    = google_compute_subnetwork.pgahq.name
+  network    = google_compute_network.pgahq.name
   subnetwork = google_compute_subnetwork.pgahq.name
 
   network_policy {
