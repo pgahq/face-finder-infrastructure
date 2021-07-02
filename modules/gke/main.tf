@@ -62,6 +62,7 @@ resource "google_container_node_pool" "main" {
   cluster = var.cluster_name
 
   location = var.zone
+  // location = element(tolist(google_container_cluster.pgahq.node_locations), 1)
 
   node_count = 2
 
