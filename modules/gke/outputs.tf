@@ -1,7 +1,3 @@
-output "address" {
-  value = google_compute_address.pgahq.address
-}
-
 output "self_link" {
   value = google_compute_network.pgahq.self_link
 }
