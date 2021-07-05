@@ -59,8 +59,3 @@ resource "google_sql_database" "pgahq" {
   instance = google_sql_database_instance.pgahq.name
   name     = "face-finder"
 }
-
-resource "google_sql_database" "compreface" {
-  instance = google_sql_database_instance.pgahq.name
-  name     = "frs"
-}
