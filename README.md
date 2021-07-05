@@ -9,6 +9,6 @@ terraform 1.0.0 (`asdf` is recommended to manage ruby version)
 - GCS
 - GKE 
 - Redis
-- SQL cloud
+- SQL cloud (P
 - Helm 
 
