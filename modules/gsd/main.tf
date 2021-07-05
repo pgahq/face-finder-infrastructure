@@ -55,7 +55,12 @@ resource "google_sql_user" "user" {
   password = var.sql_root_user_pw
 }
 
-resource "google_sql_database" "pgahq" {
+resource "google_sql_database" "face-finder" {
   instance = google_sql_database_instance.pgahq.name
   name     = "face-finder"
+}
+
+resource "google_sql_database" "compreface" {
+  instance = google_sql_database_instance.pgahq.name
+  name     = "compreface"
 }
