@@ -30,6 +30,12 @@ resource "google_sql_database_instance" "pgahq" {
       name  = "track_activity_query_size"
       value = "2048"
     }
+    insights_config {
+      query_insights_enabled  = true
+      query_string_length     = 1024
+      record_application_tags = true
+      record_client_address   = true
+    }
   }
 }
 

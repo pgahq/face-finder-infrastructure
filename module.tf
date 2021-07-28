@@ -15,3 +15,9 @@ module "gsd" {
 
   network = module.gke.self_link
 }
+
+module "gri" {
+  source = "./modules/gri"
+
+  authorized_network = module.gke.self_link
+}

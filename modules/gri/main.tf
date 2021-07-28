@@ -7,6 +7,6 @@ resource "google_redis_instance" "redis" {
 
   authorized_network = var.authorized_network
 
-  redis_version = "REDIS_4_0"
+  redis_version = "REDIS_5_0"
 }
 
