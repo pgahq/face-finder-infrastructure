@@ -11,7 +11,7 @@ resources:
   ingress:
     enabled: true
     hosts:
-      - static.facefinder.pgahq.com
+      - static.facefinder.dev.pga.com
     annotations:
        kubernetes.io/ingress.class: nginx
        kubernetes.io/tls-acme: "true"

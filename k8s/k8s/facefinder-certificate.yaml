@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: facefinder
+  namespace: default
+spec:
+  secretName: facefinder-tls
+  issuerRef:
+    name: letsencrypt-staging
+  commonName: pgahq.com
+  dnsNames:
+    - static.facefinder.dev.pga.com
+    - facefinder.dev.pga.com

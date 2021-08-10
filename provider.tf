@@ -12,7 +12,7 @@ terraform {
 
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "2.3.2"
+      version = "2.4.1"
     }
   }
 
@@ -40,9 +40,13 @@ provider "helm" {
 
 provider "kubernetes" {
   username               = module.gke.username
-  host                   = module.gke.endpoint
+  host                   = "https://${module.gke.endpoint}"
   token                  = module.gke.google_client_config.access_token
   client_certificate     = base64decode(module.gke.master_auth.0.client_certificate)
   client_key             = base64decode(module.gke.master_auth.0.client_key)
   cluster_ca_certificate = base64decode(module.gke.master_auth.0.cluster_ca_certificate)
+
+  experiments {
+    manifest_resource = true
+  }
 }
