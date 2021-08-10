@@ -58,6 +58,29 @@ resource "kubernetes_manifest" "lets-encrypt-staging-issuer" {
   }
 }
 
+resource "kubernetes_manifest" "static-facefinder-certificate" {
+  manifest = {
+    apiVersion = "cert-manager.io/v1"
+    kind = "Certificate"
+
+    metadata = {
+      name = "static-facefinder"
+      namespace = "default"
+    }
+
+    spec = {
+      secretName = "static-facefinder-tls"
+      issuerRef = {
+        name = "lets-encrypt"
+      }
+      commonName = "static.facefinder.dev.pga.com"
+      dnsNames = [
+        "static.facefinder.dev.pga.com"
+      ]
+    }
+  }
+}
+
 resource "kubernetes_manifest" "facefinder-certificate" {
   manifest = {
     apiVersion = "cert-manager.io/v1"
@@ -73,9 +96,8 @@ resource "kubernetes_manifest" "facefinder-certificate" {
       issuerRef = {
         name = "lets-encrypt"
       }
-      commonName = "pgahq.com"
+      commonName = "facefinder.dev.pga.com"
       dnsNames = [
-        "static.facefinder.dev.pga.com",
         "facefinder.dev.pga.com"
       ]
     }

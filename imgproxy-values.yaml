@@ -18,4 +18,4 @@ resources:
     tls:
       - hosts:
           - static.facefinder.dev.pga.com
-        secretName: facefinder-tls
+        secretName: static-facefinder-tls
