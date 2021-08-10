@@ -14,5 +14,8 @@ resources:
       - static.facefinder.dev.pga.com
     annotations:
        kubernetes.io/ingress.class: nginx
-       kubernetes.io/tls-acme: "true"
-
+       cert-manager.io/issuer: "lets-encrypt"
+    tls:
+      - hosts:
+          - static.facefinder.dev.pga.com
+        secretName: facefinder-tls

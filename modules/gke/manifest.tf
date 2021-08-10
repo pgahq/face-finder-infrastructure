@@ -11,13 +11,12 @@ resource "kubernetes_manifest" "lets-encrypt-issuer" {
     spec = {
       acme = {
         server = "https://acme-v02.api.letsencrypt.org/directory"
-        email = "user@example.com"
+        email = "devops@pga.com"
         privateKeySecretRef = {
           name = "lets-encrypt"
         }
         solvers = [
           {
-            selector = {}
             http01 = {
               ingress = {
                 class = "nginx"
@@ -42,13 +41,12 @@ resource "kubernetes_manifest" "lets-encrypt-staging-issuer" {
     spec = {
       acme = {
         server = "https://acme-staging-v02.api.letsencrypt.org/directory"
-        email = "user@example.com"
+        email = "devops@pga.com"
         privateKeySecretRef = {
           name = "lets-encrypt-staging"
         }
         solvers = [
           {
-            selector = {}
             http01 = {
               ingress = {
                 class = "nginx"
@@ -73,7 +71,7 @@ resource "kubernetes_manifest" "facefinder-certificate" {
     spec = {
       secretName = "facefinder-tls"
       issuerRef = {
-        name = "lets-encrypt-staging"
+        name = "lets-encrypt"
       }
       commonName = "pgahq.com"
       dnsNames = [
