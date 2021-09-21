@@ -10,14 +10,6 @@ resource "helm_release" "cert-manager" {
   }
 }
 
-resource "helm_release" "imgproxy" {
-  name       = "imgproxy"
-  repository = "https://helm.imgproxy.net"
-  chart      = "imgproxy"
-
-  values = [file("imgproxy-values.yaml")]
-}
-
 resource "helm_release" "ingress-nginx" {
   chart      = "ingress-nginx"
   name       = "ingress-nginx"
